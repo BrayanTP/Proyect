@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Proyect.Models.tipo_usuario>
+
+@{
+    ViewBag.Title = "Tipo de usuario";
+}
+
+<h2>Tipo de usuario</h2>
+
+<p>
+    @Html.ActionLink("Agregar nuevo tipo de usuario", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tipo de usuario
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_tipo_usuario)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.idtipo_usuario }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.idtipo_usuario }) |
+                @Html.ActionLink("Asignar rol", "Create", "Asignar")
+            </td>
+        </tr>
+    }
+
+</table>
+

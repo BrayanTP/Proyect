@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Proyect.Models.libro>
+
+@{
+    ViewBag.Title = "Libro";
+}
+
+<h2>Libro</h2>
+
+<p>
+    @Html.ActionLink("Agregar Libro", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre del libro
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_libro)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.idlibro }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.idlibro }) |
+        </td>
+    </tr>
+}
+
+</table>

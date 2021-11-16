@@ -1,0 +1,26 @@
+﻿@model Proyect.Models.libro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>libro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre del libro:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_libro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idlibro }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

@@ -1,0 +1,50 @@
+﻿@model Proyect.Models.articulo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>articulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre articulo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_articulo)
+        </dd>
+
+        <dt>
+            Texto articulo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.texto_articulo)
+        </dd>
+
+        <dt>
+            Estado:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            Titulo:
+        </dt>
+
+        <dd>
+            @Proyect.Controllers.ArticuloController.nombreTitulo(Model.idtitulo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idarticulo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
