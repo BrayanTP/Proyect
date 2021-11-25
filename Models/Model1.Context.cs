@@ -13,10 +13,10 @@ namespace Proyect.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class codigo_policiaEntities : DbContext
+    public partial class codigo_policiaEntities1 : DbContext
     {
-        public codigo_policiaEntities()
-            : base("name=codigo_policiaEntities")
+        public codigo_policiaEntities1()
+            : base("name=codigo_policiaEntities1")
         {
         }
     

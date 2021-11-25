@@ -41,8 +41,9 @@
             @Proyect.Controllers.ArticuloController.nombreTitulo(item.idtitulo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idarticulo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idarticulo })
+            @Html.ActionLink("Edit", "Edit", new { id = item.idarticulo }) |
+            @Html.ActionLink("Details", "Details", new { id = item.idarticulo })
+            @Html.ActionLink("Libro", "Index", "Libro")
         </td>
     </tr>
 }

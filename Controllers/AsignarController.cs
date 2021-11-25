@@ -12,7 +12,7 @@ namespace Proyect.Controllers
         // GET: Asignar
         public ActionResult Index()
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return View(db.usuario_tipo_usuario.ToList());
             }
@@ -20,7 +20,7 @@ namespace Proyect.Controllers
 
         public static string nombreUsuario(int idUsuario)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return db.usuario.Find(idUsuario).nombreUsuario;
             }
@@ -28,7 +28,7 @@ namespace Proyect.Controllers
 
         public static string nombreTipoUsuario(int idTipoUsuario)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return db.tipo_usuario.Find(idTipoUsuario).nombre_tipo_usuario;
             }
@@ -36,14 +36,14 @@ namespace Proyect.Controllers
 
         public ActionResult listarUsuario()
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return PartialView(db.usuario.ToList());
             }
         }
         public ActionResult listarTipoUsuario()
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return PartialView(db.tipo_usuario.ToList());
             }
@@ -51,7 +51,7 @@ namespace Proyect.Controllers
 
         public ActionResult Details(int id)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return View(db.usuario_tipo_usuario.Find(id));
             }
@@ -70,7 +70,7 @@ namespace Proyect.Controllers
 
             try
             {
-                using (var db = new codigo_policiaEntities())
+                using (var db = new codigo_policiaEntities1())
                 {
                     db.usuario_tipo_usuario.Add(userRol);
                     db.SaveChanges();
@@ -85,7 +85,7 @@ namespace Proyect.Controllers
 
         public ActionResult Edit(int id)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 var userRolEdit = db.usuario_tipo_usuario.Where(a => a.idusuario == id).FirstOrDefault();
                 return View(userRolEdit);
@@ -100,7 +100,7 @@ namespace Proyect.Controllers
                 return View();
             try
             {
-                using (var db = new codigo_policiaEntities())
+                using (var db = new codigo_policiaEntities1())
                 {
                     var olduserRolEdit = db.usuario_tipo_usuario.Find(userRolEdit.idusuario);
                     olduserRolEdit.idusuario = userRolEdit.idusuario;

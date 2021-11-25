@@ -12,7 +12,7 @@ namespace Proyect.Controllers
         // GET: Articulo
         public ActionResult Index()
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return View(db.articulo.ToList());
             }
@@ -20,7 +20,7 @@ namespace Proyect.Controllers
 
         public static string nombreTitulo(int idtitulo)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return db.titulo.Find(idtitulo).nombre_titulo;
             }
@@ -28,7 +28,7 @@ namespace Proyect.Controllers
 
         public ActionResult listarTitulo()
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return PartialView(db.titulo.ToList());
             }
@@ -36,7 +36,7 @@ namespace Proyect.Controllers
 
         public ActionResult Details(int id)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return View(db.articulo.Find(id));
             }
@@ -55,7 +55,7 @@ namespace Proyect.Controllers
 
             try
             {
-                using (var db = new codigo_policiaEntities())
+                using (var db = new codigo_policiaEntities1())
                 {
                     db.articulo.Add(article);
                     db.SaveChanges();
@@ -71,7 +71,7 @@ namespace Proyect.Controllers
 
         public ActionResult Edit(int id)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 var articuloEdit = db.articulo.Where(a => a.idarticulo == id).FirstOrDefault();
                 return View(articuloEdit);
@@ -86,7 +86,7 @@ namespace Proyect.Controllers
 
             try
             {
-                using (var db = new codigo_policiaEntities())
+                using (var db = new codigo_policiaEntities1())
                 {
                     var oldarticulo = db.articulo.Find(articleEdit.idarticulo);
                     oldarticulo.nombre_articulo = articleEdit.nombre_articulo;

@@ -12,7 +12,7 @@ namespace Proyect.Controllers
         // GET: TipoUsuario
         public ActionResult Index()
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return View(db.tipo_usuario.ToList());
             }
@@ -21,7 +21,7 @@ namespace Proyect.Controllers
         // GET: TipoUsuario/Details/5
         public ActionResult Details(int id)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return View(db.tipo_usuario.Find(id));
             }
@@ -42,7 +42,7 @@ namespace Proyect.Controllers
 
             try
             {
-                using (var db = new codigo_policiaEntities())
+                using (var db = new codigo_policiaEntities1())
                 {
                     db.tipo_usuario.Add(tipoUser);
                     db.SaveChanges();
@@ -59,7 +59,7 @@ namespace Proyect.Controllers
         // GET: TipoUsuario/Edit/5
         public ActionResult Edit(int id)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 var tipoUserEdit = db.tipo_usuario.Where(a => a.idtipo_usuario == id).FirstOrDefault();
                 return View(tipoUserEdit);
@@ -74,7 +74,7 @@ namespace Proyect.Controllers
                 return View();
             try
             {
-                using (var db = new codigo_policiaEntities())
+                using (var db = new codigo_policiaEntities1())
                 {
                     var oldTipoUser = db.tipo_usuario.Find(tipoUserEdit.idtipo_usuario);
                     oldTipoUser.nombre_tipo_usuario = tipoUserEdit.nombre_tipo_usuario;

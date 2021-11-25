@@ -12,7 +12,7 @@ namespace Proyect.Controllers
         // GET: Libro
         public ActionResult Index()
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return View(db.libro.ToList());
             }
@@ -20,7 +20,7 @@ namespace Proyect.Controllers
 
         public ActionResult Details(int id)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 return View(db.libro.Find(id));
             }
@@ -39,7 +39,7 @@ namespace Proyect.Controllers
 
             try
             {
-                using (var db = new codigo_policiaEntities())
+                using (var db = new codigo_policiaEntities1())
                 {
                     db.libro.Add(book);
                     db.SaveChanges();
@@ -54,7 +54,7 @@ namespace Proyect.Controllers
 
         public ActionResult Edit(int id)
         {
-            using (var db = new codigo_policiaEntities())
+            using (var db = new codigo_policiaEntities1())
             {
                 var libroEdit = db.libro.Where(a => a.idlibro == id).FirstOrDefault();
                 return View(libroEdit);
@@ -69,7 +69,7 @@ namespace Proyect.Controllers
 
             try
             {
-                using (var db =new codigo_policiaEntities())
+                using (var db =new codigo_policiaEntities1())
                 {
                     var oldLibro = db.libro.Find(bookEdit.idlibro);
                     oldLibro.nombre_libro = bookEdit.nombre_libro;
