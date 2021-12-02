@@ -7,14 +7,14 @@ using Proyect.Models;
 
 namespace Proyect.Controllers
 {
-    public class TituloController : Controller
+    public class RequisitoController : Controller
     {
-        // GET: Titulo
+        // GET: Requisito
         public ActionResult Index()
         {
             using (var db = new codigo_policiaEntities1())
             {
-                return View(db.titulo.ToList());
+                return View(db.requisitos.ToList());
             }
         }
 
@@ -22,23 +22,7 @@ namespace Proyect.Controllers
         {
             using (var db = new codigo_policiaEntities1())
             {
-                return View(db.titulo.Find(id));
-            }
-        }
-
-        public static string nombreLibro(int idLibro)
-        {
-            using (var db = new codigo_policiaEntities1())
-            {
-                return db.libro.Find(idLibro).nombre_libro;
-            }
-        }
-
-        public ActionResult listarLibro()
-        {
-            using (var db = new codigo_policiaEntities1())
-            {
-                return PartialView(db.libro.ToList());
+                return View(db.requisitos.Find(id));
             }
         }
 
@@ -48,37 +32,7 @@ namespace Proyect.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(titulo title)
-        {
-            if (!ModelState.IsValid)
-                return View();
-
-            try
-            {
-                using(var db = new codigo_policiaEntities1())
-                {
-                    db.titulo.Add(title);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            }catch(Exception ex)
-            {
-                ModelState.AddModelError("", $"Error {ex}");
-                return View();
-            }
-        }
-
-        public ActionResult Edit(int id)
-        {
-            using(var db = new codigo_policiaEntities1())
-            {
-                var tituloEdit = db.titulo.Where(a => a.idtitulo == id).FirstOrDefault();
-                return View(tituloEdit);
-            }
-        }
-
-        [HttpPost]
-        public ActionResult Edit (titulo titleEdit)
+        public ActionResult Create(requisitos require)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -87,14 +41,46 @@ namespace Proyect.Controllers
             {
                 using (var db = new codigo_policiaEntities1())
                 {
-                    var oldTitle = db.titulo.Find(titleEdit.idtitulo);
-                    oldTitle.nombre_titulo = titleEdit.nombre_titulo;
-                    oldTitle.idlibro = titleEdit.idlibro;
+                    db.requisitos.Add(require);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Error {ex}");
+                return View();
+            }
+        }
+
+        public ActionResult Edit(int id)
+        {
+            using (var db = new codigo_policiaEntities1())
+            {
+                var requisitoEdit = db.requisitos.Where(a => a.idrequisitos == id).FirstOrDefault();
+                return View(requisitoEdit);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(requisitos requireEdit)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            try
+            {
+                using (var db = new codigo_policiaEntities1())
+                {
+                    var oldRequire = db.requisitos.Find(requireEdit.idrequisitos);
+                    oldRequire.nombre_requisitos = requireEdit.nombre_requisitos;
+                    oldRequire.descripcion_requisitos= requireEdit.descripcion_requisitos;
                     db.SaveChanges();
 
-                    return RedirectToAction("Index"); 
+                    return RedirectToAction("Index");
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", $"Error {ex}");
                 return View();
